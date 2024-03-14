@@ -1,14 +1,14 @@
-package esperer.concurrency.user
+package esperer.concurrency.selfstudy
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 
-@Table("tbl_user")
-class User(
+@Table("tbl_selfstudy")
+class SelfStudy(
     @field:Id
     val id: Long,
 
-    val name: String,
+    val userId: Long,
 
-    val password: String
+    val roomNumber: Int
 )
