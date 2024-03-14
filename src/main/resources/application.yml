@@ -1,6 +1,6 @@
 spring:
   r2dbc:
-    url: r2dbc:pool:mysql://localhost:3306/concurrency
+    url: r2dbc:pool:mysql://localhost:3306/concurrency?useUnicode=true&serverTimezone=Asia/Seoul
     username: root
     password: Esperer123!
 
