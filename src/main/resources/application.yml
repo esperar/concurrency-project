@@ -1,0 +1,9 @@
+spring:
+  r2dbc:
+    url: r2dbc:pool:mysql://localhost:3306/concurrency
+    username: root
+    password: Esperer123!
+
+logging:
+  level:
+    org.springframework.r2dbc.core: debug
