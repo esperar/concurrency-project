@@ -41,7 +41,7 @@ class SelfStudyService(
         userRepository.findById(userId)
             .flatMap {
                 if(it.selfStudyId == null) Mono.just(true) else Mono.just(false)
-            }.checkTemplate(RuntimeException("유저가 이미 신청한 상태에요"), true))
+            }.checkTemplate(RuntimeException("유저가 이미 신청한 상태에요"), true)
 
     private fun <T: RuntimeException> Mono<Boolean>.checkTemplate(onFailed: T, failedCondition: Boolean = false): Mono<Any> =
         flatMap {
