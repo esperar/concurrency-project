@@ -10,7 +10,11 @@ class SelfStudy(
 
     val userId: Long,
 
-    val roomCount: Int,
+    var roomCount: Int,
 
     val limit: Int,
-)
+) {
+    fun plusRoomCount() {
+        this.roomCount++
+    }
+}
