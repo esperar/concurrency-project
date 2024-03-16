@@ -1,4 +1,4 @@
-package esperer.concurrency.selfstudy
+package esperer.concurrency.selfstudy.domain
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
@@ -10,5 +10,7 @@ class SelfStudy(
 
     val userId: Long,
 
-    val roomNumber: Int
+    val roomCount: Int,
+
+    val limit: Int,
 )

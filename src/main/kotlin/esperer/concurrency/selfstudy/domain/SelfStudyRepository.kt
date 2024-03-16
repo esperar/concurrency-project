@@ -1,4 +1,4 @@
-package esperer.concurrency.selfstudy
+package esperer.concurrency.selfstudy.domain
 
 import org.springframework.data.r2dbc.repository.R2dbcRepository
 
