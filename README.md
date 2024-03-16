@@ -7,6 +7,8 @@
 
 ### Redis 분산락 방식 사용
 
+![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb8XI8O%2FbtszM1YHVMa%2FMbKUTWapMhO8K7YkAg8cmK%2Fimg.png)
+
 분산락은 **Race Condition이 발생할 때 하나의 공유 자원에 접근할 때 데이터에 결함이 발생하지 않도록 원자성을 보장하는 기법이다.**
 
 대표적으로 사용해볼 저장소는 Redis로 싱글스레드 기반의 NoSQL이다.
