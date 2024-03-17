@@ -14,8 +14,8 @@ class SelfStudyService(
     private val userRepository: UserRepository
 ) {
 
-    fun reserve(id: Long, request: CreateSelfStudyRequest): Mono<SelfStudyResponse> {
-        return checkLimit(id)
+    fun reserve(id: Long, request: CreateSelfStudyRequest): Mono<SelfStudyResponse> =
+        checkLimit(id)
             .flatMap { checkUser(request.userId) }
             .then(selfStudyRepository.findById(id))
             .flatMap { selfStudy ->
@@ -30,7 +30,6 @@ class SelfStudyService(
                 SelfStudyResponse(it.id, request.userId, it.roomCount, it.limit)
             }
 
-    }
 
     private fun checkLimit(id: Long) =
         selfStudyRepository.findById(id)
