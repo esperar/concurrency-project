@@ -10,7 +10,8 @@ import reactor.core.publisher.Mono
 @Service
 class SelfStudyService(
     private val selfStudyRepository: SelfStudyRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+
 ) {
 
     fun reserve(id: Long, request: CreateSelfStudyRequest): Mono<SelfStudyResponse> {
@@ -28,6 +29,7 @@ class SelfStudyService(
             }.map {
                 SelfStudyResponse(it.id, request.userId, it.roomCount, it.limit)
             }
+
     }
 
     private fun checkLimit(id: Long) =
