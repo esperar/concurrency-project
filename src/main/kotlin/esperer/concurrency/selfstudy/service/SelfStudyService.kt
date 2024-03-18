@@ -1,9 +1,11 @@
 package esperer.concurrency.selfstudy.service
 
+import esperer.concurrency.lock.DistributedLock
 import esperer.concurrency.selfstudy.domain.SelfStudyRepository
 import esperer.concurrency.selfstudy.dto.CreateSelfStudyRequest
 import esperer.concurrency.selfstudy.dto.SelfStudyResponse
 import esperer.concurrency.user.UserRepository
+import org.redisson.client.RedisClient
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
@@ -13,8 +15,9 @@ class SelfStudyService(
     private val userRepository: UserRepository
 ) {
 
-    fun reserve(id: Long, request: CreateSelfStudyRequest): Mono<SelfStudyResponse> {
-        return checkLimit(id)
+    @DistributedLock(key = "selfstudy")
+    fun reserve(id: Long, request: CreateSelfStudyRequest): Mono<SelfStudyResponse> =
+        checkLimit(id)
             .flatMap { checkUser(request.userId) }
             .then(selfStudyRepository.findById(id))
             .flatMap { selfStudy ->
@@ -28,7 +31,7 @@ class SelfStudyService(
             }.map {
                 SelfStudyResponse(it.id, request.userId, it.roomCount, it.limit)
             }
-    }
+
 
     private fun checkLimit(id: Long) =
         selfStudyRepository.findById(id)
