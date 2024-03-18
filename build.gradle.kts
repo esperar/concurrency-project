@@ -21,6 +21,7 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation("org.redisson:redisson-spring-boot-starter:3.21.1")
 
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
