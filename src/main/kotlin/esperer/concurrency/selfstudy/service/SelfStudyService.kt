@@ -1,5 +1,6 @@
 package esperer.concurrency.selfstudy.service
 
+import esperer.concurrency.lock.DistributedLock
 import esperer.concurrency.selfstudy.domain.SelfStudyRepository
 import esperer.concurrency.selfstudy.dto.CreateSelfStudyRequest
 import esperer.concurrency.selfstudy.dto.SelfStudyResponse
@@ -14,6 +15,7 @@ class SelfStudyService(
     private val userRepository: UserRepository
 ) {
 
+    @DistributedLock(key = "selfstudy")
     fun reserve(id: Long, request: CreateSelfStudyRequest): Mono<SelfStudyResponse> =
         checkLimit(id)
             .flatMap { checkUser(request.userId) }
