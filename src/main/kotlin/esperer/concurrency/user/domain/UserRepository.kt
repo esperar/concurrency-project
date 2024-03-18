@@ -1,4 +1,4 @@
-package esperer.concurrency.user
+package esperer.concurrency.user.domain
 
 import org.springframework.data.r2dbc.repository.R2dbcRepository
 
