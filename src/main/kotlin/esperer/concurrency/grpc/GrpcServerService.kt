@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono
 @Service
 class GrpcServerService(
     private val userQueryService: UserQueryService
-) : UserQueryServiceImplBase(){
+) : UserQueryServiceImplBase() {
 
-    override fun getUserInfo(request: Mono<Int64Value>?): Mono<UserResponse> {
+    override fun getUserInfo(request: Mono<Int64Value>): Mono<UserResponse> =
         userQueryService.getUserInfo(request.map { it.value })
             .map { it.toGrpc() }
-    }
+
 
     private fun esperer.concurrency.user.dto.UserResponse.toGrpc() =
         UserResponse.newBuilder()
