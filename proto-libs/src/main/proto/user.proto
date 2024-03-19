@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "esperer.pb.svc.user";
+option java_outer_classname = "UserProto";
+
+service User {
+  rpc GetUser (UserRequest) returns (UserResponse) {
+  }
+}
+
+message UserRequest {
+  int64 id = 1;
+}
+
+message UserResponse {
+  int64 id = 1;
+  string name = 2;
+}

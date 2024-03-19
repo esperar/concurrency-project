@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        protobufVersion = '3.17.3'
-        protobufPluginVersion = '0.8.17'
-        grpcVersion = '1.42.0'
+        protobufVersion = '3.25.1'
+        protobufPluginVersion = '0.8.14'
+        grpcVersion = '1.58.1'
     }
 }
 
@@ -11,17 +11,28 @@ plugins {
     id 'com.google.protobuf' version "${protobufPluginVersion}"
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'esperer'
+version '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation "com.google.protobuf:protobuf-java-util:3.25.1"
+    implementation 'com.google.protobuf:protobuf-java:3.25.1'
+    implementation 'net.devh:grpc-client-spring-boot-starter:2.15.0.RELEASE'
+    runtimeOnly "io.grpc:grpc-netty-shaded:${grpcVersion}"
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
-    compileOnly 'jakarta.annotation:jakarta.annotation-api:2.0.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+
 }
 
 protobuf {
@@ -41,12 +52,6 @@ protobuf {
         all()*.plugins {
             grpc{}
         }
-    }
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
