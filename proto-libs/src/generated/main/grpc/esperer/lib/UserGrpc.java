@@ -1,4 +1,4 @@
-package esperer.pb.svc.user;
+package esperer.lib;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -15,29 +15,29 @@ public final class UserGrpc {
   public static final java.lang.String SERVICE_NAME = "User";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<esperer.pb.svc.user.UserRequest,
-      esperer.pb.svc.user.UserResponse> getGetUserMethod;
+  private static volatile io.grpc.MethodDescriptor<esperer.lib.UserRequest,
+      esperer.lib.UserResponse> getGetUserMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetUser",
-      requestType = esperer.pb.svc.user.UserRequest.class,
-      responseType = esperer.pb.svc.user.UserResponse.class,
+      requestType = esperer.lib.UserRequest.class,
+      responseType = esperer.lib.UserResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<esperer.pb.svc.user.UserRequest,
-      esperer.pb.svc.user.UserResponse> getGetUserMethod() {
-    io.grpc.MethodDescriptor<esperer.pb.svc.user.UserRequest, esperer.pb.svc.user.UserResponse> getGetUserMethod;
+  public static io.grpc.MethodDescriptor<esperer.lib.UserRequest,
+      esperer.lib.UserResponse> getGetUserMethod() {
+    io.grpc.MethodDescriptor<esperer.lib.UserRequest, esperer.lib.UserResponse> getGetUserMethod;
     if ((getGetUserMethod = UserGrpc.getGetUserMethod) == null) {
       synchronized (UserGrpc.class) {
         if ((getGetUserMethod = UserGrpc.getGetUserMethod) == null) {
           UserGrpc.getGetUserMethod = getGetUserMethod =
-              io.grpc.MethodDescriptor.<esperer.pb.svc.user.UserRequest, esperer.pb.svc.user.UserResponse>newBuilder()
+              io.grpc.MethodDescriptor.<esperer.lib.UserRequest, esperer.lib.UserResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUser"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  esperer.pb.svc.user.UserRequest.getDefaultInstance()))
+                  esperer.lib.UserRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  esperer.pb.svc.user.UserResponse.getDefaultInstance()))
+                  esperer.lib.UserResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserMethodDescriptorSupplier("GetUser"))
               .build();
         }
@@ -96,8 +96,8 @@ public final class UserGrpc {
 
     /**
      */
-    default void getUser(esperer.pb.svc.user.UserRequest request,
-        io.grpc.stub.StreamObserver<esperer.pb.svc.user.UserResponse> responseObserver) {
+    default void getUser(esperer.lib.UserRequest request,
+        io.grpc.stub.StreamObserver<esperer.lib.UserResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserMethod(), responseObserver);
     }
   }
@@ -131,8 +131,8 @@ public final class UserGrpc {
 
     /**
      */
-    public void getUser(esperer.pb.svc.user.UserRequest request,
-        io.grpc.stub.StreamObserver<esperer.pb.svc.user.UserResponse> responseObserver) {
+    public void getUser(esperer.lib.UserRequest request,
+        io.grpc.stub.StreamObserver<esperer.lib.UserResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetUserMethod(), getCallOptions()), request, responseObserver);
     }
@@ -156,7 +156,7 @@ public final class UserGrpc {
 
     /**
      */
-    public esperer.pb.svc.user.UserResponse getUser(esperer.pb.svc.user.UserRequest request) {
+    public esperer.lib.UserResponse getUser(esperer.lib.UserRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserMethod(), getCallOptions(), request);
     }
@@ -180,8 +180,8 @@ public final class UserGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<esperer.pb.svc.user.UserResponse> getUser(
-        esperer.pb.svc.user.UserRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<esperer.lib.UserResponse> getUser(
+        esperer.lib.UserRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserMethod(), getCallOptions()), request);
     }
@@ -207,8 +207,8 @@ public final class UserGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_USER:
-          serviceImpl.getUser((esperer.pb.svc.user.UserRequest) request,
-              (io.grpc.stub.StreamObserver<esperer.pb.svc.user.UserResponse>) responseObserver);
+          serviceImpl.getUser((esperer.lib.UserRequest) request,
+              (io.grpc.stub.StreamObserver<esperer.lib.UserResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -232,8 +232,8 @@ public final class UserGrpc {
           getGetUserMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              esperer.pb.svc.user.UserRequest,
-              esperer.pb.svc.user.UserResponse>(
+              esperer.lib.UserRequest,
+              esperer.lib.UserResponse>(
                 service, METHODID_GET_USER)))
         .build();
   }
@@ -244,7 +244,7 @@ public final class UserGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return esperer.pb.svc.user.UserProto.getDescriptor();
+      return esperer.lib.UserProto.getDescriptor();
     }
 
     @java.lang.Override

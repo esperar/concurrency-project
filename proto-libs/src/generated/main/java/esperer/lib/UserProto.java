@@ -2,7 +2,7 @@
 // source: user.proto
 
 // Protobuf Java Version: 3.25.1
-package esperer.pb.svc.user;
+package esperer.lib;
 
 public final class UserProto {
   private UserProto() {}
@@ -37,8 +37,8 @@ public final class UserProto {
       "\n\nuser.proto\"\031\n\013UserRequest\022\n\n\002id\030\001 \001(\003\"" +
       "(\n\014UserResponse\022\n\n\002id\030\001 \001(\003\022\014\n\004name\030\002 \001(" +
       "\t20\n\004User\022(\n\007GetUser\022\014.UserRequest\032\r.Use" +
-      "rResponse\"\000B\"\n\023esperer.pb.svc.userB\tUser" +
-      "ProtoP\001b\006proto3"
+      "rResponse\"\000B\032\n\013esperer.libB\tUserProtoP\001b" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

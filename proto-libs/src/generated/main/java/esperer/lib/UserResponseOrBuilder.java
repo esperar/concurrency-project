@@ -2,7 +2,7 @@
 // source: user.proto
 
 // Protobuf Java Version: 3.25.1
-package esperer.pb.svc.user;
+package esperer.lib;
 
 public interface UserResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:UserResponse)
