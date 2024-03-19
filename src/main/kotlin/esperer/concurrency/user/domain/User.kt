@@ -1,4 +1,4 @@
-package esperer.concurrency.user
+package esperer.concurrency.user.domain
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table

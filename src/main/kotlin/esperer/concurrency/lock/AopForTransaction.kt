@@ -1,6 +1,6 @@
 package esperer.concurrency.lock
 
-import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint
+import org.aspectj.lang.ProceedingJoinPoint
 import org.springframework.stereotype.Component
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
@@ -9,5 +9,5 @@ import org.springframework.transaction.annotation.Transactional
 class AopForTransaction {
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
-    fun proceed(joinPoint: MethodInvocationProceedingJoinPoint) = joinPoint.proceed()
+    fun proceed(joinPoint: ProceedingJoinPoint) = joinPoint.proceed()
 }

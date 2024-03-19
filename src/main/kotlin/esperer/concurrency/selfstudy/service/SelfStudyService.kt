@@ -4,8 +4,7 @@ import esperer.concurrency.lock.DistributedLock
 import esperer.concurrency.selfstudy.domain.SelfStudyRepository
 import esperer.concurrency.selfstudy.dto.CreateSelfStudyRequest
 import esperer.concurrency.selfstudy.dto.SelfStudyResponse
-import esperer.concurrency.user.UserRepository
-import org.redisson.client.RedisClient
+import esperer.concurrency.user.domain.UserRepository
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 
