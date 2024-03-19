@@ -1,8 +1,8 @@
 buildscript {
     ext {
-        protobufVersion = '3.14.0'
-        protobufPluginVersion = '0.8.14'
-        grpcVersion = '1.35.0'
+        protobufVersion = '3.17.3'
+        protobufPluginVersion = '0.8.17'
+        grpcVersion = '1.42.0'
     }
 }
 
@@ -21,7 +21,7 @@ repositories {
 dependencies {
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
-    compileOnly 'jakarta.annotation:jakarta.annotation-api'
+    compileOnly 'jakarta.annotation:jakarta.annotation-api:2.0.0'
 }
 
 protobuf {
@@ -41,6 +41,12 @@ protobuf {
         all()*.plugins {
             grpc{}
         }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
