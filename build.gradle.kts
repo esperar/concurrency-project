@@ -29,11 +29,23 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+    implementation(project(":proto-libs"))
+
     implementation("org.springframework.boot:spring-boot-starter-data-r2dbc")
     implementation("io.asyncer:r2dbc-mysql:1.0.2")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("io.projectreactor:reactor-test")
+
+    implementation("io.grpc:grpc-protobuf:1.45.1")
+    implementation("io.grpc:grpc-stub:1.45.1")
+    implementation("com.salesforce.servicelibs:reactor-grpc-stub:1.2.3")
+    compileOnly("javax.annotation:javax.annotation-api:1.3.2")
+    compileOnly("jakarta.annotation:jakarta.annotation-api:2.0.0")
+
+    implementation("io.projectreactor:reactor-core")
+    testImplementation("io.projectreactor:reactor-test")
+    implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 }
 
 tasks.withType<KotlinCompile> {

@@ -1,11 +1,11 @@
 package esperer.concurrency.lock
 
+import org.aspectj.lang.ProceedingJoinPoint
 import org.aspectj.lang.annotation.Around
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.reflect.MethodSignature
 import org.redisson.api.RedissonClient
 import org.slf4j.LoggerFactory
-import org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint
 import org.springframework.core.annotation.Order
 import org.springframework.stereotype.Component
 
@@ -24,7 +24,7 @@ class DistributedLockAop(
     private val log = LoggerFactory.getLogger(this.javaClass.name)
 
     @Around("@annotation(esperer.concurrency.lock.DistributedLock)")
-    fun lock(joinPoint: MethodInvocationProceedingJoinPoint): Any? {
+    fun lock(joinPoint: ProceedingJoinPoint): Any? {
         val signature = joinPoint.signature as MethodSignature
         val method = signature.method
         val distributedLock = method.getAnnotation(DistributedLock::class.java)
