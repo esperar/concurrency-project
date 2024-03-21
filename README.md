@@ -139,4 +139,4 @@ public void writeData(String filename, String data) {
 
 <br>
 
-Redlock 방식에 잘못된 문서화 부분에 대해서 이슈를 남겨주셔서 감사합니다. @MagicalLas https://github.com/esperar/concurrency-project/issues/12
+Redlock 방식에 잘못된 문서화 부분에 대해서 이슈를 남겨주셔서 감사합니다. [MagicalLas - issue 12](https://github.com/esperar/concurrency-project/issues/12)
