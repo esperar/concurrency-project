@@ -137,4 +137,5 @@ public void writeData(String filename, String data) {
 
 관련 문제에 대해 상세하게 설명되어져있는 문서는 아까 위에서도 링크한 [Martin Kleppmann - How to do distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html) 문서를 참고했습니다.
 
-
+> Redlock 방식에 잘못된 문서화 부분에 대해서 이슈를 남겨주셔서 감사합니다. @MagicalLas
+> https://github.com/esperar/concurrency-project/issues/12
