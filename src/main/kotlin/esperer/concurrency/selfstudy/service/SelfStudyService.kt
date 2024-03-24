@@ -32,18 +32,17 @@ class SelfStudyService(
                                 userId = user.id
                             )
                         )
-
                     }
                     .then(selfStudyRepository.save(selfStudy))
             }.map {
-                SelfStudyResponse(it.id, request.userId, it.roomCount, it.limit)
+                SelfStudyResponse(it.id, request.userId, it.roomCount, it.limitCount)
             }
 
 
     private fun checkLimit(id: Long) =
         selfStudyRepository.findById(id)
             .flatMap {
-                if(it.roomCount >= it.limit) Mono.just(false)
+                if(it.roomCount >= it.limitCount) Mono.just(false)
                 else Mono.just(true)
             }.checkTemplate(RuntimeException("자리가 남아있지 않아요"), true)
 
