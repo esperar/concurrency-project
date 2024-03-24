@@ -2,6 +2,8 @@ package esperer.concurrency.selfstudy.service
 
 import esperer.concurrency.lock.DistributedLock
 import esperer.concurrency.selfstudy.domain.SelfStudyRepository
+import esperer.concurrency.selfstudy.domain.SelfStudyUser
+import esperer.concurrency.selfstudy.domain.SelfStudyUserRepository
 import esperer.concurrency.selfstudy.dto.CreateSelfStudyRequest
 import esperer.concurrency.selfstudy.dto.SelfStudyResponse
 import esperer.concurrency.user.domain.UserRepository
@@ -11,7 +13,8 @@ import reactor.core.publisher.Mono
 @Service
 class SelfStudyService(
     private val selfStudyRepository: SelfStudyRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val selfStudyUserRepository: SelfStudyUserRepository
 ) {
 
     @DistributedLock(key = "selfstudy")
@@ -23,8 +26,13 @@ class SelfStudyService(
                 selfStudy.plusRoomCount()
                 userRepository.findById(request.userId)
                     .flatMap { user ->
-                        user.reserveSelfStudy(id)
-                        userRepository.save(user)
+                        selfStudyUserRepository.save(
+                            SelfStudyUser(
+                                selfStudyId = id,
+                                userId = user.id
+                            )
+                        )
+
                     }
                     .then(selfStudyRepository.save(selfStudy))
             }.map {
@@ -40,10 +48,8 @@ class SelfStudyService(
             }.checkTemplate(RuntimeException("자리가 남아있지 않아요"), true)
 
     private fun checkUser(userId: Long) =
-        userRepository.findById(userId)
-            .flatMap {
-                if(it.selfStudyId == null) Mono.just(true) else Mono.just(false)
-            }.checkTemplate(RuntimeException("유저가 이미 신청한 상태에요"), true)
+        selfStudyUserRepository.existsByUserId(userId)
+            .checkTemplate(RuntimeException("유저가 이미 신청한 상태에요"), true)
 
     private fun <T: RuntimeException> Mono<Boolean>.checkTemplate(onFailed: T, failedCondition: Boolean = false): Mono<Any> =
         flatMap {

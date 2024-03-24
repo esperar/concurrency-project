@@ -10,10 +10,16 @@ CREATE TABLE IF NOT EXISTS `tbl_user` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(10) NOT NULL,
     `password` CHAR(60) NOT NULL,
-    `selfstudy_id` BIGINT NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `FK_tbl_selfstudy_TO_tbl_user_1` FOREIGN KEY (`selfstudy_id`) REFERENCES `tbl_selfstudy`(`id`)
+    PRIMARY KEY (`id`)
     );
+
+CREATE TABLE IF NOT EXISTS `tbl_selfstudy_user`(
+    `id` BIGINT NOT NULL AUTO_INCREMENT,
+    `selfstudy_id` BIGINT NOT NULL,
+    `user_id` BIGINT NOT NULL,
+    CONSTRAINT `FK_tbl_selfstudy_TO_tbl_selfstudy_user_1` FOREIGN KEY (`selfstudy_id`) REFERENCES `tbl_selfstudy`(`id`),
+    CONSTRAINT `FK_tbl_user_TO_tbl_selfstudy_user_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user`(`id`)
+)
 
 CREATE TABLE IF NOT EXISTS `tbl_board` (
     `id` BIGINT NOT NULL AUTO_INCREMENT,
