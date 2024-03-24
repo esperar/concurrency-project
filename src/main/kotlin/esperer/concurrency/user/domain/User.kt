@@ -12,12 +12,4 @@ class User(
 
     val password: String,
 
-    selfStudyId: Long?
-) {
-    var selfStudyId = selfStudyId
-        private set
-
-    fun reserveSelfStudy(selfStudyId: Long) {
-        this.selfStudyId = selfStudyId
-    }
-}
+)

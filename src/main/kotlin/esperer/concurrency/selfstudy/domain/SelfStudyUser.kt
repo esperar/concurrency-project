@@ -3,16 +3,13 @@ package esperer.concurrency.selfstudy.domain
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Table
 
-@Table("tbl_selfstudy")
-class SelfStudy(
+@Table("tbl_selfstudy_user")
+class SelfStudyUser(
     @field:Id
     val id: Long = 0,
 
-    var roomCount: Int,
+    val selfStudyId: Long,
 
-    val limitCount: Int,
+    val userId: Long,
 ) {
-    fun plusRoomCount() {
-        this.roomCount++
-    }
 }
