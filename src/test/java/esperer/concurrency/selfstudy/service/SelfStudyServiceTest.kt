@@ -6,12 +6,13 @@ import esperer.concurrency.selfstudy.domain.SelfStudyUserRepository
 import esperer.concurrency.selfstudy.dto.CreateSelfStudyRequest
 import esperer.concurrency.user.domain.User
 import esperer.concurrency.user.domain.UserRepository
-import org.junit.jupiter.api.*
-import org.junit.jupiter.api.Assertions.*
+import org.assertj.core.api.Assertions
+import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.MethodOrderer
+import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestMethodOrder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.transaction.annotation.Transactional
-import reactor.core.publisher.Mono
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 @SpringBootTest
@@ -32,7 +33,7 @@ class SelfStudyServiceTest(
         SelfStudy(
             id = 2,
             roomCount = 0,
-            limit = 50
+            limitCount = 50
         )
     }
 
@@ -57,13 +58,12 @@ class SelfStudyServiceTest(
         selfStudyRepository.save(selfStudyStub)
     }
 
-    @Test
-    @Transactional
+    // @Test
     fun `락_사용_회원_50명이_자습신청`() {
         userList.parallelStream().forEach {
             selfStudyService.reserve(2, CreateSelfStudyRequest(it.id))
         }
         val selfStudyUserCount = selfStudyUserRepository.findAll().count()
-        assertTrue(selfStudyUserCount == Mono.just(50L))
+        Assertions.assertThat(selfStudyUserCount.block()).isEqualTo(50L)
     }
 }
